@@ -130,6 +130,4 @@ void FAutomat::CreateAutomat(){
  H = G->S;
 
  Q = G->N;
- }
-
- 
+ }
