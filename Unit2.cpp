@@ -105,7 +105,9 @@ void FAutomat::SetGrammar(Grammar *NG){
 	G = NG;
 }
 
-void FAutomat::CreateAutomat(){ rulemap::iterator i, j;
+void FAutomat::CreateAutomat(){
+	
+ rulemap::iterator i, j;
  rule r;
  char c, t;
  int k;
