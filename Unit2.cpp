@@ -1,4 +1,5 @@
 #include "Unit2.h"
+
 int Grammar::IsRegular(){
  if (N.empty() || P.empty())
         return 0;
@@ -22,6 +23,7 @@ int Grammar::IsRegular(){
                 }
         return 1;
 }
+
 
 void Grammar::InGrammar(char *fname){
  long n, i;
@@ -52,6 +54,7 @@ ifstream fi(fname);
 
  fi >> S;
 }
+
 string Grammar::AsString(){
  string res = "";
  charset::iterator i;
@@ -81,7 +84,8 @@ string Grammar::AsString(){
  res += S;
  res += "\n";
  return res;
-}void Grammar::OutGrammar(char *fname){ ofstream fo(fname);
+}
+void Grammar::OutGrammar(char *fname){ ofstream fo(fname);
  charset::iterator i;
  fo << N.size() << "\n";
  for (i = N.begin(); i != N.end(); i++)
@@ -93,8 +97,10 @@ string Grammar::AsString(){
  for (rulemap::iterator j = P.begin(); j != P.end();j++)
         fo << j->first << " " << j->second << "\n";
         fo << "\n" << S;
-}void FAutomat::SetGrammar(Grammar *NG){ G = NG;
-}void FAutomat::CreateAutomat(){ rulemap::iterator i, j;
+}
+void FAutomat::SetGrammar(Grammar *NG){ G = NG;
+}
+void FAutomat::CreateAutomat(){ rulemap::iterator i, j;
  rule r;
  char c, t;
  int k;
@@ -116,6 +122,7 @@ string Grammar::AsString(){
 
  H = G->S;
 
- Q = G->N; }
+ Q = G->N;
+ }
 
  
