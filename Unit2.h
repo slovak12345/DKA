@@ -14,6 +14,7 @@ using std::multimap;
 using std::set;
 using std::pair;
 
+// comparator for working in mappings
 struct rulecmp{
         bool operator()(const char c1, const char c2){
                 return (c1 < c2);
@@ -26,35 +27,37 @@ typedef pair<rule_l, rule_r> rule;
 typedef multimap<rule_l, rule_r, rulecmp> rulemap;
 typedef set<char> charset;
 
+// grammar class
 class Grammar{
         public:
-                charset N;
-                charset T;
-                rulemap P;
-                char S;
- int IsRegular();
- void InGrammar(char *fname);
- string AsString();
- void OutGrammar(char *fname);
+                charset N; // set of nonterminals
+                charset T; // set of terminals
+                rulemap P; // lots of rules
+                char S; // initial character
+ int IsRegular(); //grammar check function for regularity
+ void InGrammar(char *fname); //grammar input function from a file
+ string AsString(); //function grammar output to a string
+ void OutGrammar(char *fname); // output function grammars to file
 };
 
 typedef map<char, map<char, charset> > ftable;
 
+// finite state machine class
 class FAutomat{
  public:
-        Grammar *G;
-        charset Q;
-        charset T;
-        ftable F;
-        char H;
-        charset Z;
-        int MustPaint;
+        Grammar *G; // related grammar
+        charset Q; // multiple states
+        charset T; // multiple input characters
+        ftable F; // rules table
+        char H; // initial state
+        charset Z; // set of finite states
+        int MustPaint; // graph rendering flag
         FAutomat(){
                 MustPaint = 0;
         }
-        void SetGrammar(Grammar *NG);
-        void CreateAutomat();
-        void PaintAutomat(TCanvas * Canvas, long w, long h);
-        void OutToTable(TStringGrid * Grid);
-        void CreateDeterm();
+        void SetGrammar(Grammar *NG); // function linking with grammar
+        void CreateAutomat(); // function creating an automaton from grammar
+        void PaintAutomat(TCanvas * Canvas, long w, long h); // graph rendering function
+        void OutToTable(TStringGrid * Grid); //the function for displaying the rule table in StringGrid
+        void CreateDeterm(); // DKA conversion function
 };
