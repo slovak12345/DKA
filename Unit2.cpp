@@ -101,8 +101,10 @@ void Grammar::OutGrammar(char *fname){
         fo << "\n" << S;
 }
 
-void FAutomat::SetGrammar(Grammar *NG){ G = NG;
-}
+void FAutomat::SetGrammar(Grammar *NG){
+	G = NG;
+}
+
 void FAutomat::CreateAutomat(){ rulemap::iterator i, j;
  rule r;
  char c, t;
