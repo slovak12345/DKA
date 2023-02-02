@@ -56,8 +56,4 @@ class FAutomat{
                 MustPaint = 0;
         }
         void SetGrammar(Grammar *NG); // function linking with grammar
-        void CreateAutomat(); // function creating an automaton from grammar
-        void PaintAutomat(TCanvas * Canvas, long w, long h); // graph rendering function
-        void OutToTable(TStringGrid * Grid); //the function for displaying the rule table in StringGrid
-        void CreateDeterm(); // DKA conversion function
 };

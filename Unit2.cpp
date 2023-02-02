@@ -104,30 +104,3 @@ void Grammar::OutGrammar(char *fname){
 void FAutomat::SetGrammar(Grammar *NG){
 	G = NG;
 }
-
-void FAutomat::CreateAutomat(){
-	
- rulemap::iterator i, j;
- rule r;
- char c, t;
- int k;
-
- for(c = 'A'; G->N.count(c); c++);
-
- for(i = G->P.begin(); i != G->P.end(); i++)
-        if (i->second.length() == 1 && G->T.count(i->second[0])){
-                for(j = G->P.lower_bound(i->first), k = G->P.count(i->first); k; j++, k--)
-                        if (j->second.length() == 2 && j->second[0] == i->second[0] && G->N.count(j->second[1]))
-                                break;
-                        if (!k){
-                                r.first = i->first;
-                                r.second = i->second + c;
-                                G->P.insert(r);
-                                G->N.insert(c);
-                        }
-        }
-
- H = G->S;
-
- Q = G->N;
- }
