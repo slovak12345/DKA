@@ -53,7 +53,7 @@ ifstream fi(fname);
  }
 
  fi >> S;
-}
+}
 
 string Grammar::AsString(){
  string res = "";
@@ -84,8 +84,10 @@ string Grammar::AsString(){
  res += S;
  res += "\n";
  return res;
-}
-void Grammar::OutGrammar(char *fname){ ofstream fo(fname);
+}
+
+void Grammar::OutGrammar(char *fname){
+ ofstream fo(fname);
  charset::iterator i;
  fo << N.size() << "\n";
  for (i = N.begin(); i != N.end(); i++)
@@ -97,7 +99,8 @@ void Grammar::OutGrammar(char *fname){ ofstream fo(fname);
  for (rulemap::iterator j = P.begin(); j != P.end();j++)
         fo << j->first << " " << j->second << "\n";
         fo << "\n" << S;
-}
+}
+
 void FAutomat::SetGrammar(Grammar *NG){ G = NG;
 }
 void FAutomat::CreateAutomat(){ rulemap::iterator i, j;
